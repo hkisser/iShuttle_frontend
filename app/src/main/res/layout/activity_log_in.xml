@@ -28,9 +28,10 @@
                 android:src="@drawable/ic_directions_bike_black_24dp"
                 android:visibility="visible" />
             <EditText
+                android:id="@+id/username_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:inputType="textPersonName"
                 android:ems="10"
                 android:background="@android:color/transparent"
                 android:drawablePadding="12dp"
@@ -45,6 +46,7 @@
                 android:layout_height="1dp"
                 android:background="#f9d7db" />
             <EditText
+                android:id="@+id/password_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -64,42 +66,35 @@
                 android:background="#f9d7db" />
 
 
-
             <Button
+                android:id="@+id/BlogIn"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_login"
-                android:text="Log in"
-                android:textColor="#f16f7d"
-                android:textAllCaps="false"
-                android:padding="16dp"
-                android:clickable="true"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
                 android:layout_marginTop="24dp"
-                android:textSize="18sp"/>
+                android:background="@drawable/background_login"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text="Log in"
+                android:textAllCaps="false"
+                android:textColor="#f16f7d"
+                android:textSize="18sp"
+                android:onClick="LoginClick"/>
 
             <Button
+                android:id="@+id/OpenReg"
+                style="@style/Base.TextAppearance.AppCompat.Body1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_signup"
-                android:text="Register"
-                style="@style/Base.TextAppearance.AppCompat.Body1"
-                android:textColor="#fff"
-                android:textAllCaps="false"
-                android:textSize="18sp"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/background_signup"
                 android:clickable="true"
-                android:padding="16dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forget your Password? "
-                style="@style/TextAppearance.AppCompat.Body2"
-                android:textColor="#fff"
                 android:padding="16dp"
-                android:clickable="true"
-                android:layout_marginBottom="16dp"/>
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                />
 
         </LinearLayout>
     </ScrollView>
