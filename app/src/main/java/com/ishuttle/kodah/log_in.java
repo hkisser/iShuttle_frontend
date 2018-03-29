@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.StrictMode;
@@ -31,6 +33,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+
+
 public class log_in extends AppCompatActivity {
     InputStream is=null;
     String line=null;
@@ -45,6 +49,7 @@ public class log_in extends AppCompatActivity {
         UsernameEt=(EditText)findViewById(R.id.username_id);
         PasswordEt=(EditText)findViewById(R.id.password_id);
         StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+        isNetworkAvailable();
 
     }
     public void LoginClick(View view){
@@ -57,6 +62,7 @@ public class log_in extends AppCompatActivity {
         /*ProgressDialog dialog=new ProgressDialog(getApplicationContext());
         dialog.setMessage("Login in...");
         dialog.show();*/
+        if(isNetworkAvailable())
         new LoginTask().execute(username,password);
         //Toast.makeText(this,"Pass Second Stage",Toast.LENGTH_SHORT).show();
         //dialog.dismiss();
@@ -67,9 +73,6 @@ public class log_in extends AppCompatActivity {
 
 
     class LoginTask extends AsyncTask<String,String,String>{
-
-
-
 
 
         @Override
@@ -146,6 +149,17 @@ public class log_in extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),MapsActivity.class));
             }
         }
+    }
+    public boolean isNetworkAvailable(){
+        ConnectivityManager manager =(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable=false;
+        if (networkInfo != null&& networkInfo.isConnectedOrConnecting()) {
+            isAvailable = true;
+        }else {
+            Toast.makeText(log_in.this,"Not Connected", Toast.LENGTH_SHORT).show();
+        }
+        return isAvailable;
     }
 
 }
