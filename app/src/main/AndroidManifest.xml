@@ -60,7 +60,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Driver_Activity" />
-        <activity android:name=".Splash_screen"></activity>
+        <activity android:name=".Splash_screen" />
+        <activity android:name=".decision_page"></activity>
     </application>
 
 </manifest>
