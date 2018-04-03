@@ -14,6 +14,8 @@ while($my_query->fetch()){
 	$temp['Password']=$Password;
 	array_push($Drivers_details,$temp);
 }
+
 echo json_encode($Drivers_details);
+mysqli_close($con);
 
 ?>

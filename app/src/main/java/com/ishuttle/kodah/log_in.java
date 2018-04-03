@@ -33,8 +33,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-
-
 public class log_in extends AppCompatActivity {
     InputStream is=null;
     String line=null;
@@ -65,15 +63,31 @@ public class log_in extends AppCompatActivity {
         if(isNetworkAvailable())
         new LoginTask().execute(username,password);
         //Toast.makeText(this,"Pass Second Stage",Toast.LENGTH_SHORT).show();
-        //dialog.dismiss();
 
 
 
+
+    }
+    public void OpenRegClick(View view){
+        finish();
+        startActivity(new Intent(getApplicationContext(),Register.class));
     }
 
 
     class LoginTask extends AsyncTask<String,String,String>{
 
+
+        private  ProgressDialog dialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+           /* dialog.setMessage("Login in...");
+            dialog.setIndeterminate(false);
+            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            dialog.setCancelable(false);
+            dialog.show();*/
+        }
 
         @Override
         protected String doInBackground(String... params) {
@@ -125,11 +139,11 @@ public class log_in extends AppCompatActivity {
 
 
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                Toast.makeText(log_in.this,"Not Connected", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(log_in.this,"Not Connected", Toast.LENGTH_SHORT).show();
             } catch (JSONException e) {
-                e.printStackTrace();
+                Toast.makeText(log_in.this,"Problem getting data,Try again", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -138,7 +152,7 @@ public class log_in extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            //String id = null;
+            //dialog.dismiss();
             if(s.equals("fault")){
 
                 Toast.makeText(getApplicationContext(),"Wrong Password or You haven't registered,Click on the REGISTER BUTTON to register",Toast.LENGTH_LONG).show();
@@ -146,7 +160,9 @@ public class log_in extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(),"LOG IN Successful MR."+s,Toast.LENGTH_SHORT).show();
                 finish();
-                startActivity(new Intent(getApplicationContext(),MapsActivity.class));
+                Intent intent=new Intent(new Intent(getApplicationContext(),Driver_Activity.class));
+                intent.putExtra("value",s);
+                startActivity(intent);
             }
         }
     }
