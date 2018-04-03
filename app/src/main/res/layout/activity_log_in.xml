@@ -99,6 +99,7 @@
                 android:clickable="true"
                 android:padding="16dp"
                 android:text="Register"
+                android:onClick="OpenRegClick"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="18sp" />
