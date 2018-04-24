@@ -69,6 +69,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".decision_page"></activity>
+        <activity android:name=".locateKNUST"></activity>
     </application>
 
 </manifest>
